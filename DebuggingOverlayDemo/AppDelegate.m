@@ -16,7 +16,25 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Warc-performSelector-leaks"
+    Class overlayClass = NSClassFromString(@"UIDebuggingInformationOverlay");
+    SEL prepareDebuggingOverlaySel = NSSelectorFromString(@"prepareDebuggingOverlay");
+    if([overlayClass respondsToSelector:prepareDebuggingOverlaySel]) {
+        [overlayClass performSelector:prepareDebuggingOverlaySel];
+    }
+    
+//    SEL overlaySel = NSSelectorFromString(@"overlay");
+//    if ([overlayClass respondsToSelector:overlaySel]) {
+//        Class overlay = [overlayClass performSelector:overlaySel];
+//        
+//        SEL toggleVisibilitySel = NSSelectorFromString(@"toggleVisibility");
+//        if ([overlay respondsToSelector:toggleVisibilitySel]) {
+//            [overlay performSelector:toggleVisibilitySel];
+//        }
+//    }
+#pragma clang diagnostic pop
     return YES;
 }
 
