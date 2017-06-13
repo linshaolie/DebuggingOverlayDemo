@@ -5,11 +5,7 @@
 从类名可以大致知道它是用来 debug 用的。是的，`UIDebuggingInformationOverlay` 是 `UIWindow` 的一个子类，主要是用来给开发者和设计师进行UI调试用的（估计是Apple内部人员使用的）。
 
 它大概是长这样的：
-<span style="text-align: center; display: block; color: gray; font-size: 14px">
-<img src="./resources/1.png" width="302px"/>
-长这样
-</span>
-
+[长这样](./resources/1.png)
 
 怎么用呢？首先我们得让它显示出来，通过类方法 `prepareDebuggingOverlay` 加载下这个视图，然后又两种方式可以让它显示：
 
